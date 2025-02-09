@@ -32,6 +32,9 @@ macro_rules! include_proto {
     ($package: tt) => {
         include!(concat!(env!("OUT_DIR"), concat!("/", $package, ".rs")));
     };
+    () => {
+        include!(concat!(env!("OUT_DIR"), "/__tonic_build_include_all.rs"));
+    };
 }
 
 /// Include an encoded `prost_types::FileDescriptorSet` as a `&'static [u8]`. The parameter must be
